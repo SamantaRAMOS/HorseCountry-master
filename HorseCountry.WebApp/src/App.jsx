@@ -54,7 +54,7 @@ function App() {
   };
 
   // 4. Función para procesar la compra (se usa en el componente Carrito)
-  const finalizarCompra = async (navegarA) => {
+ const finalizarCompra = async (navegarA) => {
     if (cart.length === 0) return;
 
     try {
@@ -68,7 +68,8 @@ function App() {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           },
           body: JSON.stringify({
-            statusId: 2 // ID 2 = "Reservado" en tu base de datos
+            Price: horse.price || horse.Price,
+            statusId: 3
           })
         })
       );
@@ -98,7 +99,7 @@ function App() {
       console.error("Fallo en la reserva:", error);
       alert("No se pudo completar la reserva. Intenta nuevamente.");
     }
-  };
+  }
   return (
     <div className='App'>
       <BrowserRouter>
