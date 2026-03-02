@@ -96,7 +96,7 @@ const AdminPanel = () => {
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Raza / Color</th>
               <th className="py-3 px-6 text-center">Precio</th>
               <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Estado Actual</th>
-              <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Acciones</th>
+              {/* <th className="px-5 py-3 border-b-2 text-left text-sm font-semibold uppercase">Acciones</th> */}
             </tr>
           </thead>
           <tbody>
@@ -124,10 +124,10 @@ const AdminPanel = () => {
                     ))}
                   </select>
                 </td>
-                <td className="px-5 py-5 text-sm">
+                {/* <td className="px-5 py-5 text-sm">
                   <button className="text-blue-600 hover:text-blue-900 font-medium mr-4">Editar</button>
                   <button className="text-red-600 hover:text-red-900 font-medium">Eliminar</button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

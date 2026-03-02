@@ -26,8 +26,10 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
     fetch(`http://localhost:5233/api/horses?page=${currentPage}&pageSize=8`)
       .then((res) => res.json())
       .then((data) => {
+        const listaOriginal = data.items || data; 
+        const disponibles = listaOriginal.filter(h => (h.statusId || h.StatusId) === 1);
 
-        const itemsWithImages = data.items.map(horse => ({
+        const itemsWithImages = disponibles.map(horse => ({
           ...horse,
           randomImage: images[Math.floor(Math.random() * images.length)]
         }));
@@ -44,6 +46,7 @@ const [searchQuery, setSearchQuery] = useState(initialSearch);
         setLoading(false);
       });
   }, [currentPage]);
+  
 
   if (loading) return <div className="text-center py-10">Cargando ejemplares...</div>;
 
