@@ -81,8 +81,8 @@ public class HorsesController : ControllerBase
         // Actualizamos directamente usando el ID numérico que viene del Front
         horse.StatusId = horseDto.StatusId;
         
-        // Si quieres permitir cambiar el nombre o precio en el mismo botón:
         if (!string.IsNullOrEmpty(horseDto.Name)) horse.Name = horseDto.Name;
+        if (!string.IsNullOrEmpty(horseDto.ImageUrl)) horse.ImageUrl = horseDto.ImageUrl;
         horse.Price = (double)horseDto.Price;
 
         await _context.SaveChangesAsync();
@@ -96,15 +96,16 @@ public class HorsesController : ControllerBase
         var newHorse = new Horse
         {
             Name = horseDto.Name,
-            Descriprtion = horseDto.Description, // Nota: En tu entidad está escrito como 'Descriprtion'
+            Descriprtion = horseDto.Description,
             Price = (double)horseDto.Price,
+            ImageUrl = horseDto.ImageUrl,
             BreedId = horseDto.BreedId,
             ColorId = horseDto.ColorId,
-            StatusId = 4, // Por defecto 'Disponible'
+            StatusId = 4,
             GenderId = horseDto.GenderId,
-            UserId = 1, // Aquí deberías usar el ID del usuario autenticado
-            CreatedAt = DateTime.UtcNow.TimeOfDay,
-            UpdatedAt = DateTime.UtcNow.TimeOfDay
+            UserId = 1,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
         };
 
         _context.Horses.Add(newHorse);

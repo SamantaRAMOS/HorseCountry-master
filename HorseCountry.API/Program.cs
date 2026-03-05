@@ -69,9 +69,10 @@ public partial class Program
             app.MapScalarApiReference();
         }
 
-        using (var scope = app.Services.CreateScope().ServiceProvider.GetRequiredService<HorseDbContext>())
+        using (var scope = app.Services.CreateScope())
         {
-            scope.Database.Migrate();
+            var dbContext = scope.ServiceProvider.GetRequiredService<HorseDbContext>();
+            dbContext.Database.Migrate();
         }
 
         app.UseHttpsRedirection();
